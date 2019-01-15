@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import compress from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
+import Template from './../template'
 
 //comment out before building for production
 import devBundle from './devBundle'
@@ -24,6 +25,16 @@ app.use(compress())
 app.use(helmet())
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors())
+
+app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
+
+
+app.get('*', (req, res) => {
+  res.status(200).send(Template({
+    markup: "",
+    css: ""
+  }))
+})
 
 // Catch unauthorised errors
 app.use((err, req, res, next) => {
