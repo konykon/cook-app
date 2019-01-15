@@ -1,0 +1,15 @@
+{
+  
+    "events": {
+      "restart": "kill-port 3000",
+      "crash": "kill-port 3000"
+    },
+    "delay": "500",
+  
+    "verbose": false,
+    "watch": [
+      "./server",
+      "./client"
+    ],
+    "exec": "webpack --mode=development --config webpack.config.server.js && node ./dist/server.generated.js"
+}
