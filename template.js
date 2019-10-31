@@ -1,16 +1,9 @@
-export default ({markup, css}) => {
+export default ({markup, css, title}) => {
     return `<!doctype html>
       <html lang="en">
         <head>
           <meta charset="utf-8">
-          <title>MERN Social</title>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
-          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-          <style>
-              a{
-                text-decoration: none
-              }
-          </style>
+          <title>${title}</title>
         </head>
         <body style="margin:0">
           <div id="root">${markup}</div>

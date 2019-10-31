@@ -1,19 +1,20 @@
 import mongoose from 'mongoose'
-import crypto from 'crypto'
-import { string } from 'prop-types';
+import {RecipeIngredientSchema} from './recipe.model'
+
 const StepSchema = new mongoose.Schema({
-    stepDescription: {
+    title: {
         type: String,
-        required: 'Description is required'
+    //    required: 'Title is required'
     },
-    stepPhoto: {
+    description: {
+        type: String,
+    //    required: 'Description is required'
+    },
+    photo: {
         data: Buffer,
         contentType: String
     },
-    stepVideo: {
-        data: Buffer,
-        contentType: String
-    }
+    ingredients: [RecipeIngredientSchema],
 })
 
 export default mongoose.model('Step', StepSchema)

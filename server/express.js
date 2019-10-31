@@ -6,6 +6,8 @@ import compress from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
 import Template from './../template'
+import recipeRoutes from './routes/recipe.routes'
+import stepRoutes from './routes/step.routes'
 
 //comment out before building for production
 import devBundle from './devBundle'
@@ -28,11 +30,15 @@ app.use(cors())
 
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
+// mount routes
+app.use('/', recipeRoutes)
+app.use('/', stepRoutes)
 
 app.get('*', (req, res) => {
   res.status(200).send(Template({
     markup: "",
-    css: ""
+    css: "",
+    title: "Cook App"
   }))
 })
 
